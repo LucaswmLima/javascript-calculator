@@ -42,9 +42,10 @@ function calculate() {
     if (number) {
         var eval_number = eval(number)
         console.log(eval_number.toString().length)
-        if (eval_number.toString().length < 22){         
+        if (eval_number.toString().length >= 22){        
+            document.getElementById('result').innerHTML = eval_number.toExponential(2) 
             document.getElementById('result').style.fontSize = '25px'   
-            document.getElementById('result').innerHTML = eval_number.toExponential(2)
+            
             
         }
         else{
