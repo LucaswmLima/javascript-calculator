@@ -31,7 +31,7 @@ function calculate() {
         }
         else{
     
-        document.getElementById('result').innerHTML = eval_number.toExponential(2)
+        document.getElementById('result').innerHTML = eval_number
         }
     }
     else{
