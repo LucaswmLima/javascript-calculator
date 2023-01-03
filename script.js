@@ -24,7 +24,15 @@ function insert(input_number) {
 function calculate() {
     var number = document.getElementById('result').innerHTML;
     if (number) {
-        document.getElementById('result').innerHTML = eval(number)
+        var eval_number = eval(number)
+        console.log(eval_number.toString().length);
+        if (eval_number.toString().length > 15){            
+            document.getElementById('result').innerHTML = eval_number.toExponential(2)
+        }
+        else{
+    
+        document.getElementById('result').innerHTML = eval_number.toExponential(2)
+        }
     }
     else{
         document.getElementById('result').innerHTML = ""
