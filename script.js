@@ -28,10 +28,11 @@ function insert(input_number) {
     var number = document.getElementById('result').innerHTML
     var lastdigit = document.getElementById('result').innerHTML = number.slice(-1)
     if ((number.toString().length) + 1 <= 30) {
-        if ((lastdigit == '+' || lastdigit == '-' || lastdigit == '/' || lastdigit == '*') && (input_number == '+' || input_number == '-' || input_number == '/' || input_number == '*')) {
+        if ((lastdigit == '+' || lastdigit == '-' || lastdigit == '/' || lastdigit == '*') && (input_number == '/' || input_number == '*')) {
             document.getElementById('result').innerHTML = number.substring(0, number.length - 1) + input_number
 
-        } else if (number == '' && (input_number == '+' || input_number == '-' || input_number == '/' || input_number == '*')) {
+
+        } else if (number == '' && (input_number == '/' || input_number == '*')) {
             document.getElementById('result').innerHTML = ''
 
         }
