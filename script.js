@@ -1,19 +1,22 @@
 function clean() {
-    document.getElementById('result').innerHTML = ""
+    document.getElementById('result').innerHTML = 0
     resize()
-    
+
 }
 
 function back() {
     var number = document.getElementById('result').innerHTML
     document.getElementById('result').innerHTML = number.substring(0, number.length - 1)
+    if (number.toString().length < 2) {
+        document.getElementById('result').innerHTML = 0
+    }
     resize()
 
 }
 
 function resize() {
     var result_lenght = (document.getElementById('result').innerHTML).toString().length
-    if (result_lenght < 22) {
+    if (result_lenght < 15) {
         document.getElementById('result').style.fontSize = '25px'
 
     }
@@ -21,18 +24,21 @@ function resize() {
         document.getElementById('result').style.fontSize = '12px'
 
     }
-    
+
 }
 
 function insert(input_number) {
     var number = document.getElementById('result').innerHTML
     var lastdigit = document.getElementById('result').innerHTML = number.slice(-1)
+
+
+
     if ((number.toString().length) + 1 <= 30) {
         if ((lastdigit == '+' || lastdigit == '-' || lastdigit == '/' || lastdigit == '*') && (input_number == '/' || input_number == '*')) {
             document.getElementById('result').innerHTML = number.substring(0, number.length - 1) + input_number
 
 
-        } else if (number == '' && (input_number == '/' || input_number == '*')) {
+        } else if (number == 0 && number.toString().length == 1 && (input_number == '/' || input_number == '*')) {
             document.getElementById('result').innerHTML = ''
 
         }
@@ -40,12 +46,23 @@ function insert(input_number) {
             document.getElementById('result').innerHTML = number + input_number
 
         }
-        
+
     }
     else {
         document.getElementById('result').innerHTML = number
 
     }
+
+    if (number == '0') {
+        if (input_number == '/' || input_number == '*' || input_number == '+' || input_number == '-') {
+            document.getElementById('result').innerHTML = number + input_number
+        } else {
+            document.getElementById('result').innerHTML = input_number
+            
+        }
+    }
+
+
     resize()
 
 
@@ -53,8 +70,9 @@ function insert(input_number) {
 
 function calculate() {
     var number = document.getElementById('result').innerHTML
+    var eval_number = eval(number)
     if (number) {
-        var eval_number = eval(number)
+        
         console.log(eval_number.toString().length)
         if (eval_number.toString().length >= 22) {
             document.getElementById('result').innerHTML = eval_number.toExponential(2)
